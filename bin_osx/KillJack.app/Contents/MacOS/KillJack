@@ -1,6 +1,6 @@
 #!/bin/sh
 
-osascript -e 'display dialog "Please wait, trying to kill jack." buttons "OK"' >/dev/null 2>/dev/null &
+osascript -e 'display dialog "Please wait, trying to kill Jack." buttons "OK"' >/dev/null 2>/dev/null &
 PID_OF_DISPLAY_GUI=$!
 
 
