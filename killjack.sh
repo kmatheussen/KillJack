@@ -17,11 +17,15 @@ while [ $(duration) -lt 10 ] ; do
     if ! killall -9 jackd ; then
         echo "finished killing jackd"
         GOT_JACKD=1
+    else
+        GOT_JACKD=0 # maybe it reappared?
     fi
     
     if ! killall -9 jackdmp ; then
         echo "finished killing jackdmp"
         GOT_JACKDMP=1
+    else
+        GOT_JACKDMP=0 # maybe it reappared?
     fi
 
     if [ $GOT_JACKD -eq 1 ] ; then
