@@ -1,0 +1,34 @@
+
+KILL JACK
+=========
+
+
+BACKGROUND
+----------
+The jack server sometimes crashes/freezes in a way that makes many users choose to restart the computer in order to restart jack.
+You don't have to restart the computer, but googling the problem and finding a solution probably takes more time than doing a restart.
+It's not very user friendly.
+
+
+This goes for all platforms. It's not a bug in jack itself that causes these crashes/freezes, it's the way jack reacts when a client misbehave in certain ways.
+
+
+
+ABOUT
+-----
+This program kills jack. Executables for Linux, MacOS, and Windows are provided. I strongly recommend that all programs using Jack includes a program like this.
+
+****************************
+* You are hereby allowed to
+* distribute this program
+* any way you want.
+***************************
+
+Are you selling a $5000 DAW that uses Jack? No problem, you can include this program without asking me or giving me any credit. [1]
+
+
+
+-Kjetil Matheussen
+
+
+[1] Note that there might be copyright issues with the icon, so you might want to replace the icon.
