@@ -1,0 +1,27 @@
+#!/bin/sh
+
+osascript -e 'display dialog "Please wait, trying to kill jack." buttons "OK"' >/dev/null 2>/dev/null &
+PID_OF_DISPLAY_GUI=$!
+
+
+`pwd`/killjack.sh
+FAILURE=$?
+
+
+# jack pilot needs to be restarted after jackd has been killed. If not, it shows a message about needing to restart the system.
+killall -9 JackPilot
+
+
+echo "failure:$FAILURE $OSTYPE"
+
+# Unable to get rid of output in command below:
+kill $PID_OF_DISPLAY_GUI >/dev/null 2>/dev/null
+
+if [ $FAILURE -eq 1 ] ; then
+    osascript -e 'display dialog "Failed killing Jack. You should try again." buttons {"OK"}'
+else
+    osascript -e 'display dialog "Jack seems to be dead now. Now you can restart Jack and your applications." buttons {"OK"}'
+fi
+
+
+exit $FAILURE
