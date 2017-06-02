@@ -6,7 +6,9 @@ KILL JACK
 BACKGROUND
 ----------
 The jack server sometimes crashes/freezes in a way that makes many users choose to restart the computer in order to restart jack.
+
 You don't have to restart the computer, but googling the problem and finding a solution probably takes more time than doing a restart.
+
 It's not very user friendly.
 
 
