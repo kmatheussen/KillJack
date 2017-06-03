@@ -6,6 +6,7 @@ clean:
 	$(MAKE) -C windows clean
 
 target_osx:
+	mkdir -p bin_osx
 	rm -f bin_osx/Kill\ Jack.app/Contents/MacOS/*~ 
 	cp killjack.sh bin_osx/Kill\ Jack.app/Contents/MacOS/
 
