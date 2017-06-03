@@ -11,13 +11,11 @@ target_osx:
 
 
 target_linux:
-	mkdir -p bin_linux
 	rm -f bin_linux/*~
 	cp killjack.sh bin_linux/
 
 
 target_windows:
-	mkdir -p bin_windows
 	rm -f bin_windows/*~
 	$(MAKE) -C windows
 	cp windows/Kill\ Jack.exe bin_windows/
