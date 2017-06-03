@@ -13,13 +13,14 @@ This is not very user friendly.
 
 The problem exists on all platforms. It's not a bug in Jack itself, it's how the program reacts when a client misbehave in certain ways.
 
-A better solution to this problem than using this program, would be if Jack ran a watchdog, but it currently doesn't.
 
 
 
 ABOUT
 -----
 This program kills Jack unconditionally. Executables for Linux, MacOS, and Windows are provided. I strongly recommend that all programs using Jack includes a program like this.
+
+A better solution would be if Jack ran a watchdog, but it currently doesn't.
 
 You are allowed to distribute this program any way you want. [1]
 
