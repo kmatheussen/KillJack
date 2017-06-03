@@ -7,11 +7,11 @@ BACKGROUND
 ----------
 The Jack server sometimes crashes/freezes in a way that makes users restart the computer in order to use Jack again.
 
-You don't really have to restart the computer, but googling the problem and finding a solution probably takes more time than restarting.
+Users don't really have to restart the computer, but googling the problem and finding a solution could take more time than restarting.
 
 This is not very user friendly.
 
-The problem exists on all platforms. It's not a bug in Jack itself that causes these crashes/freezes, it's how the program reacts when a client misbehave in certain ways.
+The problem exists on all platforms. It's not a bug in Jack itself, it's how the program reacts when a client misbehave in certain ways.
 
 A better solution to this problem than using this program, would be if Jack ran a watchdog, but it currently doesn't.
 
