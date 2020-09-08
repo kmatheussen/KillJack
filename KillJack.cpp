@@ -192,8 +192,18 @@ static void setNewQuote(QMessageBox *box){
 }
 
 int main(int argc, char **argv){
+#if 1
+  argc = 4;
+  const char *argv2[argc] = {argv[0], "-platform", "windows:fontengine=freetype", NULL};
+                        
+  QApplication app(argc, (char**)argv2);
+#else
   QApplication app(argc, argv);
+#endif
 
+  //for(auto s : app.arguments())
+  //  printf("Arg: -%s-\n",s.toUtf8().constData());
+  
   QTime time = QTime::currentTime();
   qsrand(time.msec());
   
@@ -202,6 +212,7 @@ int main(int argc, char **argv){
   box->setText("     Please wait, trying to kill Jack.     ");
   setNewQuote(box);
   
+#if 1
   showQtWindowInFront(box);
   
   auto *kill_thread = new KillThread();
@@ -217,7 +228,8 @@ int main(int argc, char **argv){
       //setNewQuote(box);
     }
   }
-
+#endif
+  
   box->setText("Jack is probably dead now. Now you can restart Jack and your applications.");
   //setNewQuote(box);
   showQtWindowInFront(box);
