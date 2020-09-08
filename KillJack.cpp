@@ -42,6 +42,9 @@ static void kill_jackd(void){
 #if defined(FOR_MACOSX)
     const char *command4 = "killall -9 JackPilot"; // On OSX, jack pilot needs to be restarted after jackd has been killed. (if not, it shows a message about needing to restart the system)
     system(command4);
+
+    const char *command5 = "killall -9 qjackctl"; // On OSX, qjackctl needs to be restarted after jackd has been killed. (if not, it shows a message about needing to restart the system)
+    system(command5);
 #endif
 
     msleep(250);

@@ -8,8 +8,9 @@ PID_OF_DISPLAY_GUI=$!
 FAILURE=$?
 
 
-# jack pilot needs to be restarted after jackd has been killed. If not, it shows a message about needing to restart the system.
+# jack pilot and qjackctl must be restarted after jackd has been killed. If not, it shows a message about needing to restart the system.
 killall -9 JackPilot
+killall -9 qjackctl
 
 
 echo "failure:$FAILURE $OSTYPE"
