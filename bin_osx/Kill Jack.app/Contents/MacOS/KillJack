@@ -1,28 +1,57 @@
 #!/bin/sh
 
-osascript -e 'display dialog "Please wait, trying to kill Jack." buttons "OK"' >/dev/null 2>/dev/null &
-PID_OF_DISPLAY_GUI=$!
+
+STARTTIME=$(date +%s)
+
+duration () {
+    expr $(date +%s) - $STARTTIME
+}
 
 
-`pwd`/killjack.sh
-FAILURE=$?
+GOT_JACKD=0
+GOT_JACKDMP=0
 
+osascript -e 'display dialog "Please wait, killing jack for 10 seconds" buttons {"OK"}' &
+PIDOFF_OSA=$!
 
-# jack pilot and qjackctl must be restarted after jackd has been killed. If not, it shows a message about needing to restart the system.
+sleep 1
 killall -9 JackPilot
 killall -9 qjackctl
+killall -9 QJackCtl
 
+# Try for 10 seconds.
+while [ $(duration) -lt 10 ] ; do 
 
-echo "failure:$FAILURE $OSTYPE"
+    if ! killall -9 jackd ; then
+        
+        echo "killall -9 jackd"
+    
+        #echo "finished killing jackd" (commented out. can't trust the output of killall)
+        #GOT_JACKD=1
+    else
+        GOT_JACKD=0 # maybe it reappared?
+    fi
+    
+    if ! killall -9 jackdmp ; then
+        echo "killall -9 jackdmp"
+        #echo "finished killing jackdmp" (commented out. can't trust the output of killall)
+        #GOT_JACKDMP=1
+    else
+        GOT_JACKDMP=0 # maybe it reappared?
+    fi
 
-# Unable to get rid of output in command below:
-kill $PID_OF_DISPLAY_GUI >/dev/null 2>/dev/null
+    if [ $GOT_JACKD -eq 1 ] ; then
+        if [ $GOT_JACKDMP -eq 1 ] ; then
+            exit 0
+        fi
+    fi
 
-if [ $FAILURE -eq 1 ] ; then
-    osascript -e 'display dialog "Failed killing Jack. You should try again." buttons {"OK"}'
-else
-    osascript -e 'display dialog "Jack seems to be dead now. Now you can restart Jack and your applications." buttons {"OK"}'
-fi
+#    echo $(duration)
+    sleep 0.01
+done
 
+kill $PIDOFF_OSA
 
-exit $FAILURE
+osascript -e 'display dialog "Jack should be dead now. Now you can restart Jack and your applications." buttons {"OK"}'
+
+#exit 1  (commented out. can't trust the output of killall)
